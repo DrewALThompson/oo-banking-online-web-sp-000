@@ -24,9 +24,9 @@ class Transfer
     else self.valid? && @sender.balance >= @amount
       @sender.deposit(amount * -1)
       @receiver.deposit(amount)
+      @status = "completed"
+      @last_transfer = @receiver.deposit(amount)
     end
-    @status = "completed"
-    @last_transfer = @receiver.deposit(amount)
   end
       
       
