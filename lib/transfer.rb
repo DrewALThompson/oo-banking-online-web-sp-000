@@ -18,14 +18,14 @@ class Transfer
     if !(self.valid? && @sender.balance >= @amount)
       @status = "rejected"
       return "Transaction rejected. Please check your account balance."
-    elsif
-      @status = "completed"
-      return "Transaction was already executed"
-    else self.valid? && @sender.balance >= @amount
+    elsif self.valid? && @sender.balance >= @amount && @status != 'completed'
       @sender.deposit(@amount * -1)
       @receiver.deposit(@amount)
       @status = "completed"
       @last_transfer = @receiver.deposit(@amount)
+    else
+      @status = "completed"
+      return "Transaction was already executed"
     end
   end
       
