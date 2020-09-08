@@ -22,6 +22,7 @@ class Transfer
       @status = "completed"
       return "Transaction was already executed"
     else self.valid? && @sender.balance >= @amount
+      @sender.deposit(amount * -1)
       @receiver.deposit(amount)
     end
     @status = "completed"
