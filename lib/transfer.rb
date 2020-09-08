@@ -20,6 +20,7 @@ class Transfer
       return "Transaction rejected. Please check your account balance."
     elsif
       @status = "completed"
+      return "Transaction was already executed"
     else self.valid? && @sender.balance >= @amount
       @receiver.deposit(amount)
     end
