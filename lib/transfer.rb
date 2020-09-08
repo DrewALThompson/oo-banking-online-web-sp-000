@@ -22,10 +22,10 @@ class Transfer
       @status = "completed"
       return "Transaction was already executed"
     else self.valid? && @sender.balance >= @amount
-      @sender.deposit(amount * -1)
-      @receiver.deposit(amount)
+      @sender.deposit(@amount * -1)
+      @receiver.deposit(@amount)
       @status = "completed"
-      @last_transfer = @receiver.deposit(amount)
+      @last_transfer = @receiver.deposit(@amount)
     end
   end
       
