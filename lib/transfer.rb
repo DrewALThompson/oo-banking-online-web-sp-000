@@ -23,7 +23,6 @@ class Transfer
       @sender.deposit(@amount * -1)
       @receiver.deposit(@amount)
       @status = "completed"
-      @last_transfer = @receiver.deposit(@amount)
     else
       @status = "completed"
       return "Transaction was already executed"
